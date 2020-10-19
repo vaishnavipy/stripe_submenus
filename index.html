@@ -143,11 +143,9 @@
                cursor: pointer;
                transition: background-color 1s;
                display: none;
+               color:white;
             }
-            i{
-                color:white;
-            }
-
+           
             #side_menu:hover{
                 background-color: grey;
             }
@@ -157,6 +155,55 @@
             #start:hover{
                 background-color: grey;
             }
+            .tooltip {
+                position: relative;
+                display: inline-block;
+               
+                }
+
+            .tooltip .tooltiptext {
+                visibility: hidden;
+           
+            
+               display: block;
+                background-color: white;
+                color: #102A42;
+                text-align: left;
+                border-radius: 6px;
+                padding: 5px 10px;
+                position: absolute;
+                z-index: 1;
+                top: 150%;
+                left: 50%;
+                margin-left: -250px;
+                }
+
+                .tooltip .tooltiptext::after {
+                content: "";
+                position: absolute;
+                bottom: 100%;
+                left: 50%;
+                margin-left: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: transparent transparent white transparent;
+                }
+
+                .tooltip:hover .tooltiptext {
+                visibility: visible;
+                }
+                .submenu{
+
+                    padding-right: 20px;
+                }
+                
+
+
+
+
+
+
+
             /* nav media query */
             @media screen and (max-width: 1000px) {
 
@@ -248,9 +295,17 @@
                 <img id="logo" src="https://vannilla-js-basic-project-17-stripe-submenus.netlify.app/images/logo.svg" >
                
                 <div id="navbar">
-                    <a href ="#" class="link">Products</a>
-                    <a href ="#" class="link">Developers</a>
-                    <a href ="#" class="link">Company</a>
+                    <a href ="#" class="link tooltip">Products
+                        <div class="tooltiptext">
+                            <h5 >Products</h5>
+                           
+                            <div><span class="submenu"><i class="fa fa-credit-card"></i>Payment</span><span class="submenu"><i class="fa fa-credit-card"></i>Terminal</span><span class="submenu"><i class="fa fa-credit-card"></i>Connect</span></div>
+                        </div>
+                    
+                    
+                    </a>
+                    <a href ="#" class="link tooltip">Developers</a>
+                    <a href ="#" class="link tooltip">Company</a>
 
                 </div>
               
