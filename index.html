@@ -103,18 +103,20 @@
                
             }
             #page_content h1{
-                padding: 0;
-                margin: 10;
-                font-size: 90px;
+                margin: 0;
+                padding: 0px 0px;
+                
+                font-size: 6vw;
                 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                 color:#102A42;
 
             }
             #page_content p{
-                margin: 0;
+               
+               
                 color:#617D98;
                 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-                font-size: 20px;
+                font-size: 22px;
                 line-height: 40px;
             }
             #start{
@@ -128,8 +130,106 @@
                 border:0;
 
             }
+
+            #side_menu{
+
+               
+               position: absolute;
+               top:8%;
+               right:0%;
+               padding: 10px;
+               background-color: #222222;
+               border-radius: 10px;
+               cursor: pointer;
+               transition: background-color 1s;
+               display: none;
+            }
+            i{
+                color:white;
+            }
+
+            #side_menu:hover{
+                background-color: grey;
+            }
+
+
+
             #start:hover{
                 background-color: grey;
+            }
+            /* nav media query */
+            @media screen and (max-width: 1000px) {
+
+                #content{
+                    width:90vw;
+                }
+                #topbar{
+                    width:80%;
+                }
+
+                #phone_svg{
+
+                    top:30%;
+                    width:30vw;
+                    height: 55vh;
+                    right:2%;
+
+                    }
+                    #page_content{
+
+                        padding-top: 55px;
+                        width:60%;
+
+                    }
+                    #page_content h1{
+                        font-size: 4vw;
+                    }
+                    #page_content p{
+                        font-size: 19px;
+                    }
+                    
+                
+
+
+
+            }
+
+
+          
+            @media only screen and (max-width: 800px) {
+                #main_container{
+
+                    background-size: cover;
+
+                }
+                #phone_svg{
+                    display: none;
+                    
+                }
+                #navbar{
+                    display: none;
+                }
+
+                #page_content{
+
+                    padding-top: 20%;
+                    width:80%;
+                }
+
+                #page_content p{
+                    font-size: 17px;
+                }
+                #sign_in{
+                    display: none;
+                }
+                #side_menu{
+                    display: inline;
+                }
+                #page_content h1{
+                        font-size: 7vw;
+                    }
+                    
+                
             }
            
         </style>
@@ -156,12 +256,14 @@
               
 
             </div>
-            <div id="phone_svg" ><img src="https://vannilla-js-basic-project-17-stripe-submenus.netlify.app/images/phone.svg"></div>
+            <div ><img id="phone_svg"  src="https://vannilla-js-basic-project-17-stripe-submenus.netlify.app/images/phone.svg"></div>
             <button id="sign_in">Sign In</button>
 
+            <div id="side_menu"><i class="fa fa-bars"></i></div>
+
             <div id="page_content">
-                <h1>Payments infrastructure
-                    for the internet</h1>
+                <h1>Payments</h1><h1> infrastructure</h1>
+                   <h1> for the internet</h1>
 
                 <p>Millions of companies of all sizes—from startups to Fortune 500s—use Stripe’s software and APIs to accept payments, send payouts, and manage their businesses online.</p>
                 <button id="start">Start now</button>
