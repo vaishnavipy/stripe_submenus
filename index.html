@@ -6,7 +6,7 @@
     <head>
     
     
-        <title>SideBar JavaScript</title>
+        <title>Stripe - Vanilla JavaScript</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <!--  <link rel="stylesheet" href="reviews.css"> 
        <script src="reviews.js"></script>  --> 
@@ -30,6 +30,24 @@
                background-size: contain;
               
             }
+            .overlay_mainContainer::after{
+                content:"";
+                position: absolute;
+                z-index: 1;
+                background-color: black;
+                opacity: 0.3;
+                top:0;
+                bottom:0;
+                left:0;
+                right:0;
+                width: 100vw;
+                height: 100vh;
+
+
+            }
+
+
+
             .link{
                 text-decoration: none;
                 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -200,17 +218,20 @@
                     padding-right: 20px;
                     padding-bottom: 15px;
                    cursor: pointer;
+                   font-size: 15px;
 
                 }
                 .icon{
 
                     padding: 5px;
+                    color:#617D98;
                 }
                 
                 #close{
                     float:right;
                     color:#617D98;
                     cursor: pointer;
+                    font-size: 2rem;
 
                 }
 
@@ -233,6 +254,7 @@
                     margin: 20px;
                     height:90vh;
                     visibility: hidden;
+                    z-index:2 ;
                 }
 
 
@@ -368,7 +390,7 @@
             </div>
 
             <div id="modal">
-                <div id="modal_topbar"><span id="close"><i class="fa fa-times"></i></span></div>
+             <!--  <div id="modal_topbar"><span id="close"><i class="fa fa-times"></i></span></div>
 
                 <div>
                     <h5>Products</h5>
@@ -384,13 +406,9 @@
                 <div >
                     <h5>Developers</h5>
                     <p  class="grid_container"><span class="submenu"><i class="fa fa-credit-card icon"></i>About</span><span class="submenu"><i class="fa fa-credit-card icon"></i>Company</span></p>
-                </div>
+                </div>   --> 
                 
                
-
-
-
-
             </div>
 
            
@@ -404,6 +422,8 @@
                 const navBar = document.getElementById("navbar");
 
                 const modal = document.getElementById("modal");
+
+                const mainContainer = document.getElementById("main_container");
                
                 let subMenu; let tooltip_section="";
 
@@ -418,7 +438,7 @@
 
 
 
-                  
+                  //Loop through to create Tooltips with Submenu's
                  my_array.forEach(function(elm,i){
 
                     for(const key in elm){
@@ -434,6 +454,8 @@
 
                   
               });
+              //Fill in the inner HTMl of Nav Bar with Tooltips
+              navBar.innerHTML = tooltip_section;
 
 
 
@@ -469,13 +491,33 @@
               }
 
 
+              //Create Modal 
+              let modal_section=` <div id="modal_topbar"><span id="close"><i class="fa fa-times"></i></span></div>`;
+
+              my_array.forEach(function(elm,index){
+
+                for(const property in elm){
+
+                       subMenu = createSubMenu(property,elm) ;
+
+
+                    modal_section += `  <div>
+                    <h5>${property}</h5>
+                    <p  class="grid_container">${subMenu}</p></div>`;
+
+
+                }
 
 
 
 
-             
-                navBar.innerHTML = tooltip_section;
+              })
 
+               //Fill in the inner HTMl of Nav Bar with Tooltips
+               modal.innerHTML = modal_section;
+
+
+              // Show and Hide ToolTip on Mouse Hover and Mouse Out
                 const tooltip = document.querySelectorAll(".tooltip");
 
 
@@ -505,11 +547,46 @@
               }
 
 
+              //Open Modal on Click of SideMenu
+
+              const side_menu = document.getElementById("side_menu");
+
+              const close_modal = document.getElementById("close");
+
+
+              side_menu.onclick = function(){
+
+
+                mainContainer.classList.add("overlay_mainContainer");
+
+                modal.style.visibility ="visible";
+
+              }
+
+              close_modal.onclick = function(){
+
+                mainContainer.classList.remove("overlay_mainContainer");
+
+                  modal.style.visibility = "hidden";
+              }
 
 
 
+              // Close/Hide Modal  when window width is greater than 800px
+              window.onresize = function(){
+
+                let windowWidth = window.outerWidth;
+
+                if(windowWidth > 700){
 
 
+                  modal.style.visibility = "hidden";
+
+
+                }
+
+
+              }
 
 
             }
