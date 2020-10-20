@@ -26,18 +26,20 @@
                 height: 100vh;
                 background-repeat: no-repeat;
                 background-position: top;
-               
+                position: relative;
                background-size: contain;
+              
             }
             .link{
                 text-decoration: none;
                 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                 color:white;
                 cursor: pointer;
-            margin: 0;
+            margin: 15px;
                
-                padding: 0px 25px;
+                padding: 0px 5px;
                 letter-spacing: 2px;
+              
 
                 
             }
@@ -158,24 +160,27 @@
             .tooltip {
                 position: relative;
                 display: inline-block;
+                
+                margin: 10px;
+               
+                
                
                 }
 
             .tooltip .tooltiptext {
                 visibility: hidden;
-           
-            
-               display: block;
+       
+                white-space:nowrap;
                 background-color: white;
                 color: #102A42;
                 text-align: left;
                 border-radius: 6px;
-                padding: 5px 10px;
+                padding: 10px 10px;
                 position: absolute;
                 z-index: 1;
                 top: 150%;
                 left: 50%;
-                margin-left: -250px;
+                
                 }
 
                 .tooltip .tooltiptext::after {
@@ -189,14 +194,46 @@
                 border-color: transparent transparent white transparent;
                 }
 
-                .tooltip:hover .tooltiptext {
-                visibility: visible;
-                }
+              
                 .submenu{
 
                     padding-right: 20px;
+                    padding-bottom: 15px;
+                   cursor: pointer;
+
+                }
+                .icon{
+
+                    padding: 5px;
                 }
                 
+                #close{
+                    float:right;
+                    color:#617D98;
+                    cursor: pointer;
+
+                }
+
+                .grid_container{
+
+                    display: grid;
+                    grid-template-columns: 40% 40%;
+                    grid-column-gap: 40px;
+                    grid-row-gap: 10px;
+                  
+                }
+                #modal{
+                    padding: 10px;
+                    position: absolute;
+                    background-color: white;
+                    border-radius: 20px;
+                    border: 1px solid black;
+                    top:10;
+                    width:90vw;
+                    margin: 20px;
+                    height:90vh;
+                    visibility: hidden;
+                }
 
 
 
@@ -235,6 +272,8 @@
                         font-size: 19px;
                     }
                     
+                   
+
                 
 
 
@@ -256,6 +295,7 @@
                 #navbar{
                     display: none;
                 }
+                
 
                 #page_content{
 
@@ -296,11 +336,11 @@
                
                 <div id="navbar">
                     <a href ="#" class="link tooltip">Products
-                        <div class="tooltiptext">
+                     <!--   <div class="tooltiptext">
                             <h5 >Products</h5>
                            
-                            <div><span class="submenu"><i class="fa fa-credit-card"></i>Payment</span><span class="submenu"><i class="fa fa-credit-card"></i>Terminal</span><span class="submenu"><i class="fa fa-credit-card"></i>Connect</span></div>
-                        </div>
+                            <p><span class="submenu"><i class="fa fa-credit-card"></i>Payment</span><span class="submenu"><i class="fa fa-credit-card"></i>Terminal</span><span class="submenu"><i class="fa fa-credit-card"></i>Connect</span></p>
+                        </div>-->
                     
                     
                     </a>
@@ -327,12 +367,154 @@
            
             </div>
 
+            <div id="modal">
+                <div id="modal_topbar"><span id="close"><i class="fa fa-times"></i></span></div>
+
+                <div>
+                    <h5>Products</h5>
+                    <p  class="grid_container"><span class="submenu"><i class="fa fa-credit-card icon"></i>Payment</span><span class="submenu"><i class="fa fa-credit-card icon"></i>Terminal</span><span class="submenu"><i class="fa fa-credit-card icon"></i>Connect</span></p>
+                </div>
+                
+                <div >
+                    <h5>Company</h5>
+                    <p  class="grid_container"><span class="submenu"><i class="fa fa-credit-card icon"></i>Plugin</span><span class="submenu"><i class="fa fa-credit-card icon"></i>Library</span><span class="submenu"><i class="fa fa-credit-card icon"></i>Plugin</span><span class="submenu"><i class="fa fa-credit-card icon"></i>Billing</span></p>
+                </div>
+                
+
+                <div >
+                    <h5>Developers</h5>
+                    <p  class="grid_container"><span class="submenu"><i class="fa fa-credit-card icon"></i>About</span><span class="submenu"><i class="fa fa-credit-card icon"></i>Company</span></p>
+                </div>
+                
+               
+
+
+
+
+            </div>
+
            
 
         </div>
 
 
         <script>
+            window.onload = function(){
+
+                const navBar = document.getElementById("navbar");
+
+                const modal = document.getElementById("modal");
+               
+                let subMenu; let tooltip_section="";
+
+               
+                const my_array = [
+
+                    {"Products":["Payment","Terminal","Connect"]},
+                    {"Developers":["Plugin","Library","Plugin","Billing"]},
+                    {"Company":["About","Customers"]}
+                    
+                    ];
+
+
+
+                  
+                 my_array.forEach(function(elm,i){
+
+                    for(const key in elm){
+
+                  subMenu = createSubMenu(key,elm);
+
+                        tooltip_section += ` <a href ="#" class="link tooltip">${key}<div class="tooltiptext">
+                            <h5 >${key}</h5>
+                           
+                            <p>${subMenu}</p></div> </a>`
+
+                    }
+
+                  
+              });
+
+
+
+              //Function to create Submenu
+              function createSubMenu(key,elm){
+
+               return  elm[key].map(function(array_elm,index){
+
+
+                            if(key == "Products"){
+
+                        return  `<span class="submenu"><i class="fa fa-credit-card icon"></i>${array_elm}</span>` 
+
+                        }
+
+                        if(key == "Developers"){
+
+                            return  `<span class="submenu"><i class="fa fa-book icon"></i>${array_elm}</span>` 
+
+                        }
+
+                        if(key == "Company"){
+
+                            return  `<span href="" class="submenu"><i class="fa fa-building icon"></i>${array_elm}</span>` 
+
+                        }
+
+
+
+                        }).join("");
+
+
+              }
+
+
+
+
+
+
+             
+                navBar.innerHTML = tooltip_section;
+
+                const tooltip = document.querySelectorAll(".tooltip");
+
+
+                tooltip.forEach(elm => elm.addEventListener("mouseover",showToolTip))
+
+                tooltip.forEach(elm => elm.addEventListener("mouseout",hideToolTip));
+
+
+              function showToolTip(){
+
+                    let para_dimensions = this.children[0].children[1].getBoundingClientRect();
+
+                    this.children[0].style.marginLeft= -(para_dimensions.width/2);
+                console.log(para_dimensions.width/2)
+
+                    this.children[0].style.visibility = "visible";
+
+
+
+              }
+
+              function hideToolTip(){
+
+                this.children[0].style.visibility = "hidden";
+
+
+              }
+
+
+
+
+
+
+
+
+
+            }
+
+          
 
 
 
