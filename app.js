@@ -137,7 +137,7 @@ window.onload = function(){
 
   let scaleX=0,scaleY=0;
 
-    function scaleXY(){
+function scaleXY(){
 
 
     modal.style.transform   =`scale(${scaleX},${scaleY})`
@@ -192,7 +192,7 @@ window.onload = function(){
 
     if(windowWidth > 700){
 
-
+      mainContainer.classList.remove("overlay_mainContainer");
       modal.style.visibility = "hidden";
 
 
