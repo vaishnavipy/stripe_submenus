@@ -1,0 +1,331 @@
+body{
+    background-color: white;
+    padding: 0;
+    margin: 0;
+}
+#main_container{
+
+    background-image: url("https://vannilla-js-basic-project-17-stripe-submenus.netlify.app/images/hero.svg");
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: top;
+    position: relative;
+   background-size: contain;
+  
+}
+.overlay_mainContainer::after{
+    content:"";
+    position: absolute;
+    z-index: 1;
+    background-color: black;
+    opacity: 0.3;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    width: 100vw;
+    height: 100vh;
+
+
+}
+
+
+
+.link{
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color:white;
+    cursor: pointer;
+margin: 15px;
+   
+    padding: 0px 5px;
+    letter-spacing: 2px;
+  
+
+    
+}
+#navbar{
+    padding: 0;
+    margin: 0;
+    
+    margin: auto;
+    
+    font-size: 20px;
+    display: inline;
+   float: right;
+   padding-top: 15px;
+    
+
+    
+}
+
+
+
+#content{
+    
+   padding-top: 17px;
+    width:80vw;
+    margin: auto;
+    
+    position: relative;
+
+}
+#phone_svg{
+    display: inline-block;
+    position: absolute;
+    top:0;
+    right:5%;
+}
+#logo{
+    
+       
+    display: inline-block;
+}
+#topbar{
+    width:70%;
+  
+}
+#sign_in{
+    border-radius: 20px;
+    background-color: #222222;
+    color:white;
+    padding: 10px;
+    font-size: 17px;
+    border: none;
+    position: absolute;
+    top:18;
+    right:30;
+    cursor: pointer;
+    transition: background-color 1s;
+}
+#sign_in:hover{
+    background-color: grey;
+}
+#page_content{
+    width:60%;
+   
+}
+#page_content h1{
+    margin: 0;
+    padding: 0px 0px;
+    
+    font-size: 6vw;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color:#102A42;
+
+}
+#page_content p{
+   
+   
+    color:#617D98;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 22px;
+    line-height: 40px;
+}
+#start{
+    border-radius: 17px;
+    background-color: #222222;
+    color:white;
+    padding: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 1s;
+    border:0;
+
+}
+
+#side_menu{
+
+   
+   position: absolute;
+   top:8%;
+   right:0%;
+   padding: 10px;
+   background-color: #222222;
+   border-radius: 10px;
+   cursor: pointer;
+   transition: background-color 1s;
+   display: none;
+   color:white;
+}
+
+#side_menu:hover{
+    background-color: grey;
+}
+
+
+
+#start:hover{
+    background-color: grey;
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+    
+   
+    padding: 0px 15px;
+    padding-bottom: 30px;
+   
+   
+    }
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+
+    white-space:nowrap;
+    background-color: white;
+    color: #102A42;
+    text-align: left;
+    border-radius: 6px;
+    padding: 0px 10px;
+    position: absolute;
+    z-index: 1;
+    top: 90%; /* reduced the top percentage, so that the tooltip-text appears within the tooltip area, so that it does not keep disappearing as you move away from teh text */
+    left: 50%;
+    box-shadow: 5px 5px 5px grey;
+    
+    }
+
+    .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+    
+    }
+
+  
+    .submenu{
+
+        padding-right: 20px;
+        padding-bottom: 15px;
+       cursor: pointer;
+       font-size: 15px;
+
+    }
+    .icon{
+
+        padding: 5px;
+        color:#617D98;
+    }
+    
+    #close{
+        float:right;
+        color:#617D98;
+        cursor: pointer;
+        font-size: 2rem;
+
+    }
+
+    .grid_container{
+
+        display: grid;
+        grid-template-columns: 40% 40%;
+        grid-column-gap: 40px;
+        grid-row-gap: 10px;
+      
+    }
+    #modal{
+        padding: 10px;
+        position: absolute;
+        background-color: white;
+        border-radius: 20px;
+        border: 1px solid black;
+        top:10;
+        width:90vw;
+        margin: 20px;
+        height:90vh;
+        visibility: hidden;
+        z-index:2 ;
+        transition: transform 1s;
+        transform: scale(0,0);
+    }
+
+
+
+
+
+
+
+/* nav media query */
+@media screen and (max-width: 1200px) {
+
+    #content{
+        width:90vw;
+    }
+    #topbar{
+        width:80%;
+    }
+
+    #phone_svg{
+
+        top:30%;
+        width:30vw;
+        height: 55vh;
+        right:2%;
+
+        }
+        #page_content{
+
+            padding-top: 55px;
+            width:60%;
+
+        }
+        #page_content h1{
+            font-size: 4vw;
+        }
+        #page_content p{
+            font-size: 19px;
+        }
+        
+       
+
+    
+
+
+
+}
+
+
+
+@media only screen and (max-width: 800px) {
+    #main_container{
+
+        background-size: cover;
+
+    }
+    #phone_svg{
+        display: none;
+        
+    }
+    #navbar{
+        display: none;
+    }
+    
+
+    #page_content{
+
+        padding-top: 20%;
+        width:80%;
+    }
+
+    #page_content p{
+        font-size: 17px;
+    }
+    #sign_in{
+        display: none;
+    }
+    #side_menu{
+        display: inline;
+    }
+    #page_content h1{
+            font-size: 7vw;
+        }
+        
+    
+}
